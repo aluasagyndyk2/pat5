@@ -1,0 +1,35 @@
+@startuml
+class Main {
+    + main(args: String[]): void
+}
+
+class OnlineShopFacade {
+    - productService: ProductService
+    - paymentService: PaymentService
+    - shippingService: ShippingService
+    - notificationService: NotificationService
+    + placeOrder(product, price, customer, address): void
+}
+
+class ProductService {
+    + checkAvailability(product): boolean
+}
+
+class PaymentService {
+    + makePayment(customer, amount): boolean
+}
+
+class ShippingService {
+    + shipProduct(product, address): void
+}
+
+class NotificationService {
+    + sendConfirmation(customer): void
+}
+
+Main --> OnlineShopFacade
+OnlineShopFacade --> ProductService
+OnlineShopFacade --> PaymentService
+OnlineShopFacade --> ShippingService
+OnlineShopFacade --> NotificationService
+@enduml
